@@ -155,14 +155,26 @@ class ActionFetchFromGPT(Action):
             model = TFAutoModelForCausalLM.from_pretrained(model_name)
             input_text = tracker.latest_message.get('text')
             inputs = tokenizer.encode(input_text, return_tensors="tf")
-            outputs = model.generate(inputs, max_length=75)
+            # outputs = model.generate(inputs, max_length=75)
+            outputs = model.generate(
+                inputs,
+                max_length=150,  # Allow for a longer response
+                temperature=0.7,  # Control randomness
+                top_k=50,  # Limit the number of next-token options
+                top_p=0.9,  # Nucleus sampling
+                no_repeat_ngram_size=3,  # Prevent repetitive phrases
+                pad_token_id=tokenizer.eos_token_id,  # Ensure sentence completion
+                eos_token_id=tokenizer.eos_token_id  # Stop at a full sentence
+            )
 
             # Decode the generated text
             response = tokenizer.decode(outputs[0], skip_special_tokens=True)
+            if not response.endswith((".", "!", "?")):
+                response += "."
 
             dispatcher.utter_message(response)
         except Exception as e:
-            dispatcher.utter_message(f"Sorry I wasn't able to get more information for you. {e}")
+            dispatcher.utter_message(f"Sorry I wasn't able to get more information for you.")
 
 # class ActionSaveUserDetails(Action):
 #     def name(self) -> Text:
