@@ -24,7 +24,6 @@ A conversational AI chatbot built using Rasa that provides personalized recommen
    ```cmd
    pip install -r requirements.txt
 
-***Trained model is available in the models folder***
 ## Running the bot
 Start the Rasa action server
 ```
