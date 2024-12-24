@@ -1,0 +1,69 @@
+version: "3.1"
+
+stories:
+
+- story: greet the user
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- story: user is happy
+  steps:
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path
+  steps:
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+
+- story: affirm path
+  steps:
+  - intent: affirm
+  - action: utter_happy
+  - action: utter_affirm
+
+- story: deny path
+  steps:
+  - intent: deny
+  - action: utter_iamsorry
+
+- story: say goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: provide_learning_response
+  steps:
+  - intent: request_learning_resource
+  - action: request_learning_resource_form
+  - action: action_fetch_openlearn
+  - action: action_get_youtube_videos
+  - action: utter_affirm
+  - active_loop: null
+
+- story: assist the user
+  steps:
+  - intent: ask_assistance
+  - action: utter_offer_help
+  
+
+- story: user provides provide_feedback
+  steps:
+  - intent: provide_feedback
+  - action: utter_thank_feedback
+
+- story: describe capabilities
+  steps:
+  - intent: ask_bot_capability
+  - action: utter_bot_capabilities
+
+
+- story: user request for book
+  steps:
+  - intent: request_books
+  - action: request_book_form
+  - action: utter_book_confirm
+  - action: action_fetch_books
+  - action: utter_affirm

@@ -1,0 +1,76 @@
+version: "3.1"
+stories:
+- story: request resources 3 (.\tests\test_stories.yml)
+  steps:
+  - intent: request_learning_resource  # predicted: request_learning_resource: Can you provide me with some resources on [CyberSecurity](topic)
+  - action: request_learning_resource_form
+  - action: action_fetch_openlearn
+  - action: action_get_youtube_videos
+  - action: utter_affirm
+- story: request resources 4 (.\tests\test_stories.yml)
+  steps:
+  - intent: request_learning_resource  # predicted: request_learning_resource: Can you help me with resources on [Web Development]{"entity": "topic", "value": "web Development"}
+  - action: request_learning_resource_form
+  - action: action_fetch_openlearn
+  - action: action_get_youtube_videos
+  - action: utter_affirm
+- story: request resources 5 (.\tests\test_stories.yml)
+  steps:
+  - intent: request_learning_resource  # predicted: request_learning_resource: need help with [IoT]{"entity": "topic", "value": "Iot"}
+  - action: request_learning_resource_form
+  - action: action_fetch_openlearn
+  - action: action_get_youtube_videos
+  - action: utter_affirm
+- story: request books (.\tests\test_stories.yml)
+  steps:
+  - intent: request_books  # predicted: request_books: Provide me with books for [Python]{"entity": "topic", "value": "python"}
+  - action: request_books_form  # predicted: request_book_form
+  - action: action_fetch_books  # predicted: utter_affirm
+  - action: utter_affirm
+- story: request books 2 (.\tests\test_stories.yml)
+  steps:
+  - intent: request_books
+  - action: request_books_form  # predicted: request_book_form
+  - action: action_fetch_books  # predicted: utter_affirm
+  - action: utter_affirm
+- story: request books 3 (.\tests\test_stories.yml)
+  steps:
+  - intent: request_books
+  - action: request_books_form  # predicted: request_book_form
+  - action: action_fetch_books  # predicted: utter_affirm
+  - action: utter_affirm
+- story: sad path 1 (.\tests\test_stories.yml)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+  - action: action_listen  # predicted: utter_affirm
+- story: sad path 2 (.\tests\test_stories.yml)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye  # predicted: utter_iamsorry
+- story: sad path 3 (.\tests\test_stories.yml)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye  # predicted: utter_iamsorry
+- story: request resources 2 (.\tests\test_stories.yml)
+  steps:
+  - intent: request_learning_resource  # predicted: request_learning_resource: Provide me with resources for [Python]{"entity": "topic", "value": "python"}
+  - action: request_learning_resource_form
+  - action: action_fetch_openlearn
+  - action: action_get_youtube_videos
+  - action: utter_affirm
