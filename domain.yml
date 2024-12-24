@@ -1,0 +1,110 @@
+version: "3.1"
+
+actions:
+  - action_get_youtube_videos
+  - action_fetch_openlearn
+  - action_fetch_books
+  - action_fetch_from_gpt
+  # - action_save_user_details
+  # - action_retrieve_user_details
+  # - action_save_new_preferences
+
+slots:
+  topic:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: topic
+        conditions:
+        - active_loop: request_learning_resource_form
+      - type: from_entity
+        entity: topic
+        condition:
+        - active_loop: request_book_form
+
+entities:
+  - topic
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - request_learning_resource
+  - ask_assistance
+  - ask_bot_capability
+  - provide_feedback
+  - request_books
+  - explain_more
+
+
+responses:
+  utter_iamsorry:
+  - text: "i am sorry, i wasn't able to help you."
+
+  utter_greet:
+  - text: "Hey! How are you?"
+  - text: "Hello! How can i assist you today?"
+  - text: "Hi! What help do you need?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+  - text: "Here is something for you - Why was the picture get arrested? It got framed LOL"
+  - text: "Have you heard - Why did the scarecrow win an award? Because he was outstanding in his field! XD"
+  - text: "Cheer up! things will be better."
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+  - text: "This is great! Let me know if you need help with anything."
+  - text: "Thats great!"
+
+  utter_goodbye:
+  - text: "Bye"
+  - text: "Goodbye!"
+  - text: "Bye! See you soon."
+  - text: "Tata! have a wonderful day."
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+  - text: "I am a learning bot to help you study."
+  - text: "I am a bot made with rasa to help you learn."
+
+  utter_affirm:
+  - text: "so anything else?"
+
+  utter_thank_feedback:
+  - text: "Thank you for your feedback."
+  - text: "I appreciate your feedback. I will try to improve more and give you a more better result."
+
+
+  utter_offer_help:
+  - text: "I will try my best to help you."
+  - text: "i am very happy to assist you."
+
+  utter_bot_capabilities:
+  - text: "I can help you find learning resources, suggest topics, provide guidance. Let me know how I can assist you!"
+
+  utter_book_confirm:
+  - text: "Ofcourse, I can recommend you some books"
+  - text: "I will recommend you some books based on your previous topic if it is there."
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+forms:
+  request_learning_resource_form:
+    required_slots:
+      - topic
+  request_book_form:
+    required_slots:
+      - topic
