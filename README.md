@@ -16,7 +16,6 @@ A conversational AI chatbot built using Rasa that provides personalized recommen
 ## Installation
 
 1. **Clone the Repository**
-   ```bash
+   ```cmd
    git clone https://github.com/your-username/personalized-learning-chatbot.git
    cd personalized-learning-chatbot
- ```
