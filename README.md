@@ -19,3 +19,17 @@ A conversational AI chatbot built using Rasa that provides personalized recommen
    ```cmd
    git clone https://github.com/your-username/personalized-learning-chatbot.git
    cd personalized-learning-chatbot
+
+2. **Install dependencies**
+   ```cmd
+   pip install -r requirements.txt
+
+***Trained model is available in the models folder***
+## Running the bot
+Start the Rasa action server
+```cmd
+rasa run actions
+
+Start the rasa shell
+```cmd
+rasa shell
