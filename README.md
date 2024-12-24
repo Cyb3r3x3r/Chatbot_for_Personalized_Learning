@@ -27,9 +27,10 @@ A conversational AI chatbot built using Rasa that provides personalized recommen
 ***Trained model is available in the models folder***
 ## Running the bot
 Start the Rasa action server
-```cmd
+```
 rasa run actions
-
+```
 Start the rasa shell
-```cmd
+```
 rasa shell
+```
