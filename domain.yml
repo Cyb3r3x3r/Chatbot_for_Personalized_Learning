@@ -5,10 +5,6 @@ actions:
   - action_fetch_openlearn
   - action_fetch_books
   - action_fetch_from_gpt
-  # - action_save_user_details
-  # - action_retrieve_user_details
-  # - action_save_new_preferences
-
 slots:
   topic:
     type: text
@@ -23,9 +19,17 @@ slots:
         condition:
         - active_loop: request_book_form
 
+policies:
+  - name: FallbackPolicy
+    nlu_threshold: 0.3  # Confidence threshold for NLU fallback
+    core_threshold: 0.3  # Confidence threshold for Core fallback
+    fallback_action_name: "utter_fallback"  # Action to perform when fallback is triggered
+
 entities:
   - topic
 
+
+# All the intents listed in NLU
 intents:
   - greet
   - goodbye
@@ -40,8 +44,10 @@ intents:
   - provide_feedback
   - request_books
   - explain_more
+  - fallback
+  - enrollment
 
-
+# responses for the intents in NLU
 responses:
   utter_iamsorry:
   - text: "i am sorry, i wasn't able to help you."
@@ -52,8 +58,6 @@ responses:
   - text: "Hi! What help do you need?"
 
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
   - text: "Here is something for you - Why was the picture get arrested? It got framed LOL"
   - text: "Have you heard - Why did the scarecrow win an award? Because he was outstanding in his field! XD"
   - text: "Cheer up! things will be better."
@@ -95,6 +99,14 @@ responses:
   utter_book_confirm:
   - text: "Ofcourse, I can recommend you some books"
   - text: "I will recommend you some books based on your previous topic if it is there."
+
+  utter_fallback:
+    - text: "Sorry, I didn't quite catch that. Can you please clarify?"
+    - text: "I am not sure how to respond to that."
+    - text: "Sorry, I couldn't understand. Could you please ask something else?"
+
+  utter_enrollment:
+    - text: "You can enroll using the link provided with courses."
 
 
 session_config:

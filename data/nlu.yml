@@ -93,21 +93,37 @@ nlu:
     - Provide me more materials on [python programming](topic)
     - Can you provide learning materials on [machine learning](topic)?
     - Give me resources on [Java](topic)
-    - Do you have learning materials on [Iot](topic)?
+    - Do you have learning materials on [golang](topic)?
     - need assistance on [python](topic)
     - need help with [IoT](topic)
     - provide me some articles on [web Development](topic)
     - suggest me some articles on [blockchain](topic)
-    - suggest me some materials on [Maths](topic)
+    - suggest me some materials on [data science](topic)
     - My preference is [maths](topic)
     - I like [Python](topic)
     - Suggest me some learning materials for [blockchain](topic)
+    - Can you help me with resources on [Edge Computing](topic)?
+    - Suggest me some learning materials on [5G technology](topic)
+    - Provide me more materials on [Augmented Reality](topic)
+    - Can you provide learning materials on [Virtual Reality](topic)?
+    - Give me resources on [Quantum Computing](topic)
+    - Do you have learning materials on [Robotic Process Automation](topic)?
+    - need assistance on [Biotechnology](topic)
+    - need help with [Devops](topic)
+    - provide me some articles on [Neural Network](topic)
+    - suggest me some articles on [Deep learning](topic)
+    - suggest me some materials on [Cryptocurrency](topic)
+    - My preference is [Autonomous Drones](topic)
+    - I like [Speech recognition](topic)
+    - Suggest me some learning materials for [Digital twins](topic)
 
 - intent: request_books
   examples: |
     - i need some books to learn.
     - Can you provide me some books.
     - Suggest me some books.
+    - suggest me book about [python](topic)?
+    - can you give me books for [IoT](topic)?
 
 - intent: explain_more
   examples: |
@@ -130,9 +146,7 @@ nlu:
     - this was very helpful
     - thank you for your guidance
     - you need to improve
-    - i didn't find this useful
     - your recommendations were good
-    - you should have suggested more resources
     - thanks for your assistance
 
 - intent: ask_bot_capability
@@ -143,4 +157,20 @@ nlu:
     - what can you help me with?
     - tell me about your features
     - what services do you provide?
+
+- intent: fallback
+  examples: |
+    - im not sure about that
+    - what are you saying
+    - sorry, i did not understand
+    - can you repeat that?
+    - i don't know what you mean
+    - how to make pizza
+    - how to dance
+    - can you tell me recipes
+
+- intent: enrollment
+  examples: |
+    - can you enroll in this course?
+    - how can i enroll in courses?
 

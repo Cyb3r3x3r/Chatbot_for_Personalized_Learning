@@ -134,7 +134,7 @@ class ActionYoutubeVideos(Action):
         video_links = self.get_video_links(user_query)
 
         if video_links:
-            dispatcher.utter_message(text=f"Here are some videos for {user_query} : ")
+            dispatcher.utter_message(text=f"Here are some videos for {user_query} that you can watch: ")
             for link in video_links:
                 dispatcher.utter_message(text=link)
 
@@ -176,105 +176,3 @@ class ActionFetchFromGPT(Action):
         except Exception as e:
             dispatcher.utter_message(f"Sorry I wasn't able to get more information for you.")
 
-# class ActionSaveUserDetails(Action):
-#     def name(self) -> Text:
-#         return "action_save_user_details"
-
-#     def run(self, dispatcher:CollectingDispatcher, tracker:Tracker, domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
-#         user_name = tracker.get_slot("user_name")
-#         user_pref = tracker.get_slot("topic")
-#         #for debugging
-#         print(user_name)
-#         print(user_pref)
-
-#         if user_name and user_pref:
-#             connection = sqlite3.connect('user_data.db')
-#             cursor = connection.cursor()
-#             cursor.execute(
-#                 "INSERT INTO users (name, pref) VALUES (?, ?)",
-#                 (user_name, user_pref),
-#             )
-#             connection.commit()
-#             connection.close()
-#             dispatcher.utter_message(text=f"Got it, {user_name}! I've saved your preference for {user_pref}.")
-#         else:
-#             dispatcher.utter_message(text="I need both your name and preferences to save your details.")
-
-#         return []
-
-# class ActionRetrieveUserDetails(Action):
-#     def name(self) -> Text:
-#         return "action_retrieve_user_details"
-
-#     def run(self, dispatcher:CollectingDispatcher, tracker:Tracker, domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
-#         user_name = tracker.get_slot("user_name")
-#         print(user_name)
-#         if user_name:
-#             connection = sqlite3.connect('user_data.db')
-#             cursor = connection.cursor()
-#             cursor.execute("SELECT pref FROM users WHERE LOWER(name) = ?", (user_name.lower(),))
-#             result = cursor.fetchone()
-#             connection.close()
-
-#             if result:
-#                 user_pref = result[0]
-#                 dispatcher.utter_message(text=f"Hi {user_name}, I remember you like {result[0]}!. Is this correct?")
-#                 return [SlotSet("topic", user_pref)]
-#             else:
-#                 dispatcher.utter_message(text=f"Hi {user_name}, I don't have your preferences saved yet.")
-#                 # ask the user preference if his name is not in the database
-#                 dispatcher.utter_message(response="utter_ask_preferences")
-#         else:
-#             dispatcher.utter_message(text="I need your name to retrieve your preferences.")
-
-#         return []
-
-# class ActionSaveNewPreferences(Action):
-#     def name(self) -> Text:
-#         return "action_save_new_preferences"
-
-#     def run(self, dispatcher:CollectingDispatcher, tracker:Tracker, domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
-#         user_name = tracker.get_slot("user_name")
-#         new_preferences = tracker.get_slot("user_pref")
-
-#         if user_name and new_preferences:
-#             # Open the database connection
-#             connection = sqlite3.connect('user_data.db')
-#             cursor = connection.cursor()
-
-#             # Update the user's preferences in the database
-#             cursor.execute(
-#                 "UPDATE users SET preferences = ? WHERE name = ?",
-#                 (new_preferences, user_name),
-#             )
-#             connection.commit()
-#             connection.close()
-
-#             dispatcher.utter_message(text=f"Your preferences have been updated to {new_preferences}. Thank you for updating!")
-#         else:
-#             dispatcher.utter_message(text="I could not update your preferences. Please ensure your name and preferences are provided correctly.")
-
-#         return [SlotSet("user_pref", new_preferences)]
-    
-# class ValidateLearningResourceForm(FormValidationAction):
-#     def name(self) -> Text:
-#         return "validate_request_learning_resource_form"
-
-#     def validate_topic(
-#         self,
-#         value: Text,
-#         dispatcher: CollectingDispatcher,
-#         tracker: Tracker,
-#         domain: Dict[Text, Any],
-#     ) -> Dict[Text, Any]:
-#         # Check if topic was provided
-#         if not value:
-#             user_pref = tracker.get_slot("user_pref")
-#             if user_pref:
-#                 # Use user_pref value as topic if topic is missing
-#                 dispatcher.utter_message(text=f"I'll use your preference '{user_pref}' as the topic.")
-#                 return {"topic": user_pref}
-#             else:
-#                 dispatcher.utter_message(text="I didn't catch the topic. Could you please clarify?")
-#                 return {"topic": None}
-#         return {"topic": value}

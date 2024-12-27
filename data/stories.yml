@@ -67,3 +67,8 @@ stories:
   - action: utter_book_confirm
   - action: action_fetch_books
   - action: utter_affirm
+
+- story: user asks enrollment
+  steps:
+  - intent: enrollment
+  - action: utter_enrollment
