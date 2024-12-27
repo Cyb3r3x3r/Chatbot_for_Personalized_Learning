@@ -1,6 +1,6 @@
 # Personalized Learning Chatbot
 
-A conversational AI chatbot built using Rasa that provides personalized recommendations for learning resources, including videos, books, and courses. Additionally, the chatbot leverages a Hugging Face GPT-2 model to generate detailed explanations for various topics.
+A conversational AI chatbot with a UI using Streamlit and built using Rasa that provides personalized recommendations for learning resources, including videos, books, and courses. Additionally, the chatbot leverages a Hugging Face GPT-2 model to generate detailed explanations for various topics.
 
 ## Features
 
@@ -23,6 +23,12 @@ A conversational AI chatbot built using Rasa that provides personalized recommen
 2. **Install dependencies**
    ```cmd
    pip install -r requirements.txt
+
+3. **Train the Model**
+   ```
+   rasa train
+   ```
+Trained models are saved in models folder.
 
 ## Running the bot
 Start the Rasa action server
