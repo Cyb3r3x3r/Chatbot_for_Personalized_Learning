@@ -37,5 +37,9 @@ rasa run actions
 ```
 Start the rasa shell
 ```
-rasa shell
+rasa run -m models --enable-api --cors "*" --debug
+```
+Start the streamlit app
+```
+streamlit run app.py
 ```
