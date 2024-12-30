@@ -1,15 +1,6 @@
-# This files contains your custom actions which can be used to run
-# custom Python code.
-#
-# See this guide on how to implement these action:
-# https://rasa.com/docs/rasa/custom-actions
 
+#importing modules
 
-# This is a simple example for a custom action which utters "Hello World!"
-
-# from typing import Any, Text, Dict, List
-#
-# import sqlite3
 from transformers import TFAutoModelForCausalLM, AutoTokenizer
 import yaml
 from bs4 import BeautifulSoup
@@ -22,7 +13,7 @@ from rasa_sdk.events import SlotSet
 from rasa_sdk.forms import FormValidationAction
 
 
-
+# Driver code to fetch books on user request
 class ActionRequestBook(Action):
     def name(self)->Text:
         return "action_fetch_books"
@@ -63,6 +54,7 @@ class ActionRequestBook(Action):
             dispatcher.utter_mesaage(text=f"I am sorry. I could not find any relevant books for {query}.")
         return []
 
+# Driver code to fetch courses from OpenLearn
 class ActionOpenLearn(Action):
     def name(self)->Text:
         return "action_fetch_openlearn"
@@ -72,6 +64,7 @@ class ActionOpenLearn(Action):
         base_url = f"https://www.open.edu/openlearn/local/ocwglobalsearch/search.php?q={query}&filter=all/freecourse,article/all/all/all/all/all&sort=relevant"
 
         try:
+            # requesting the openlearn lms for courses
             response = requests.get(base_url)
             response.raise_for_status()
 
@@ -94,6 +87,7 @@ class ActionOpenLearn(Action):
             return []
         
     def run(self,dispatcher:CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any])->List[Dict[Text,Any]]:
+        # getting the text which is in topic entity
         query = tracker.get_slot("topic")
         if not query:
             dispatcher.utter_message(text="Please provide me topic so i can search some lessons for you")
@@ -109,11 +103,13 @@ class ActionOpenLearn(Action):
             dispatcher.utter_mesaage(text=f"I am sorry. I could not find any relevant courses on OpenLearn for {query}.")
         return []
 
+# Driver code to fetch youtube videos 
 class ActionYoutubeVideos(Action):
     def name(self) -> Text:
         return "action_get_youtube_videos"
     
     def get_video_links(self,query:Text)->List[Text]:
+        # Using googleapiclient to get videos from youtube
         youtube = googleapiclient.discovery.build("youtube", "v3", developerKey="AIzaSyBp6sFXnTfhKQlU3Cy4flB4BY4viyBALSM")
         request = youtube.search().list(q=query, part="snippet", type="video",maxResults=5)
         response = request.execute()
@@ -132,26 +128,27 @@ class ActionYoutubeVideos(Action):
                 dispatcher.utter_message(text="Please provide me topic so i can search some lessons for you")
                 return []
         video_links = self.get_video_links(user_query)
-
+# displaying the videos if found
         if video_links:
             dispatcher.utter_message(text=f"Here are some videos for {user_query} that you can watch: ")
             for link in video_links:
                 dispatcher.utter_message(text=link)
-
+# uttering message if videos are not found
         else:
             dispatcher.utter_mesaage(text=f"I am sorry. I could not find any videos for {user_query}.")
         return []
 
-
+# Driver code to ask questions from GPT-2 model
 class ActionFetchFromGPT(Action):
     def name(self) -> Text:
         return "action_fetch_from_gpt"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+# Defining the model name
         model_name = "gpt2"
         try:
 
-            tokenizer = AutoTokenizer.from_pretrained(model_name)
+            tokenizer = AutoTokenizer.from_pretrained(model_name)  # Tokenizing using the Auto Tokenizer
             model = TFAutoModelForCausalLM.from_pretrained(model_name)
             input_text = tracker.latest_message.get('text')
             inputs = tokenizer.encode(input_text, return_tensors="tf")
