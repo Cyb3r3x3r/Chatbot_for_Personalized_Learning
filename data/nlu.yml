@@ -158,6 +158,13 @@ nlu:
     - tell me about your features
     - what services do you provide?
 
+- intent: ask_for_videos
+  examples: |
+    - Can you provide me videos for [python](topic)?
+    - please provide some videos for [IoT](topic)?
+    - Can you suggest me some videos for [Blockchain](topic)?
+    - Can you give me some videos for [DevOps](topic)
+
 - intent: fallback
   examples: |
     - im not sure about that

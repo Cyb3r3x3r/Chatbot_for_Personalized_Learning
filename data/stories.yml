@@ -72,3 +72,9 @@ stories:
   steps:
   - intent: enrollment
   - action: utter_enrollment
+
+- story: user asks for youtube videos
+  steps:
+  - intent: ask_for_videos
+  - action: request_book_form
+  - action: action_get_youtube_videos

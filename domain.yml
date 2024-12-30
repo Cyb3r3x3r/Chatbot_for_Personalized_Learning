@@ -44,6 +44,7 @@ intents:
   - provide_feedback
   - request_books
   - explain_more
+  - ask_for_videos
   - fallback
   - enrollment
 
@@ -94,7 +95,7 @@ responses:
   - text: "i am very happy to assist you."
 
   utter_bot_capabilities:
-  - text: "I can help you find learning resources, suggest topics, provide guidance. Let me know how I can assist you!"
+  - text: "I can help you find learning resources, suggest videos and books and also give some explanation best of my kknowledge. Let me know how I can assist you!"
 
   utter_book_confirm:
   - text: "Ofcourse, I can recommend you some books"

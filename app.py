@@ -37,8 +37,8 @@ sidebox = st.sidebar
 sidebox.write("You can ask the bot to:")
 sidebox.write("\n")
 sidebox.write("- Give me resources on blockchain")
-sidebox.write("- Suggest me some books")
-sidebox.write("- Explain more about Golang")
+sidebox.write("- Suggest me some books on Java")
+sidebox.write("- Give me some videos on IoT")
 
 # Input field for user message
 user_input = st.text_input("Type your message:")
