@@ -88,34 +88,11 @@ nlu:
 
 - intent: request_learning_resource
   examples: |
-    - Can you help me with resources on [CyberSecurity](topic)?
-    - Suggest me some learning materials on [web Development](topic)
-    - Provide me more materials on [python programming](topic)
-    - Can you provide learning materials on [machine learning](topic)?
+    - Can you help me with courses on [CyberSecurity](topic)?
+    - Suggest me some courses on [web Development](topic)
+    - Provide me more courses on [python programming](topic)
+    - Can you provide courses on [machine learning](topic)?
     - Give me resources on [Java](topic)
-    - Do you have learning materials on [golang](topic)?
-    - need assistance on [python](topic)
-    - need help with [IoT](topic)
-    - provide me some articles on [web Development](topic)
-    - suggest me some articles on [blockchain](topic)
-    - suggest me some materials on [data science](topic)
-    - My preference is [maths](topic)
-    - I like [Python](topic)
-    - Suggest me some learning materials for [blockchain](topic)
-    - Can you help me with resources on [Edge Computing](topic)?
-    - Suggest me some learning materials on [5G technology](topic)
-    - Provide me more materials on [Augmented Reality](topic)
-    - Can you provide learning materials on [Virtual Reality](topic)?
-    - Give me resources on [Quantum Computing](topic)
-    - Do you have learning materials on [Robotic Process Automation](topic)?
-    - need assistance on [Biotechnology](topic)
-    - need help with [Devops](topic)
-    - provide me some articles on [Neural Network](topic)
-    - suggest me some articles on [Deep learning](topic)
-    - suggest me some materials on [Cryptocurrency](topic)
-    - My preference is [Autonomous Drones](topic)
-    - I like [Speech recognition](topic)
-    - Suggest me some learning materials for [Digital twins](topic)
 
 - intent: request_books
   examples: |
@@ -152,9 +129,6 @@ nlu:
 - intent: ask_bot_capability
   examples: |
     - what can you do?
-    - what can i expect from you?
-    - what are you used for?
-    - what can you help me with?
     - tell me about your features
     - what services do you provide?
 
@@ -164,6 +138,7 @@ nlu:
     - please provide some videos for [IoT](topic)?
     - Can you suggest me some videos for [Blockchain](topic)?
     - Can you give me some videos for [DevOps](topic)
+    - give me videos on [Java](topic)
 
 - intent: fallback
   examples: |

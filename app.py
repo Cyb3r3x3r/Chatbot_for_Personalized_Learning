@@ -51,9 +51,8 @@ if st.button("Send"):
             bot_response = get_bot_response(user_input)
             
             # Append user input and bot response to chat history
-            st.session_state.chat_history.append(f'<p style="color:blue;"><b>You:</b> {user_input}</p>')
-            st.session_state.chat_history.append(f'<p><b>Bot:</b> {bot_response}</p>')
-            
+            st.session_state.chat_history.append(f'<p style="color:white;background-color:#2a2a2a;"><b>🧑‍💻 You:</b> {user_input}</p>')
+            st.session_state.chat_history.append(f'<p style="color:white;background-color:#2a2a2a;"><b>🤖 Bot:</b> {bot_response}</p>')
     else:
         st.warning("Please enter a message.")
 

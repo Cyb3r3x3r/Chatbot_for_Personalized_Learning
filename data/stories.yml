@@ -39,7 +39,6 @@ stories:
   - intent: request_learning_resource
   - action: request_learning_resource_form
   - action: action_fetch_openlearn
-  - action: action_get_youtube_videos
   - action: utter_affirm
   - active_loop: null
 
@@ -78,3 +77,8 @@ stories:
   - intent: ask_for_videos
   - action: request_book_form
   - action: action_get_youtube_videos
+
+- story: fallback situations
+  steps:
+  - intent: fallback
+  - action: utter_fallback
